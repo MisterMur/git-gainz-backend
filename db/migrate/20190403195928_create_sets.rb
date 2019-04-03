@@ -1,12 +1,10 @@
-class CreateApiV1Sets < ActiveRecord::Migration[5.2]
+class CreateSets < ActiveRecord::Migration[5.2]
   def change
     create_table :sets do |t|
       t.integer :weight
       t.integer :reps
       t.integer :rest
-      t.belongs_to :exercise, foreign_key: true
-
-      t.timestamps
+      t.integer :exercise_id, foreign_key: true
     end
   end
 end
