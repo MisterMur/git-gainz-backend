@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create(name:'Brad',username:'BradBro',password:'1234')
+User.create(name:'Chad',username:'ChadMan',password:'1234')
+Schedule.create(name:'Week 1 Strength')
+Schedule.create(name:'Week 1 Hypertrophy')
+
+Workout.create(name:'Pull')
+Workout.create(name:'Push')
+Workout.create(name:'Legs')
