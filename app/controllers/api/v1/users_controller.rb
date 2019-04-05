@@ -2,12 +2,13 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     @users=User.all
+    # byebug
     render json: @users,:include => [:schedules]
   end
 
   def show
     @user = get_user
-    render json: @user, :include => [:schedules,:workouts]
+    render json: @user, :include => [:schedules]
   end
 
   def create
@@ -18,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
   def update
     @user = get_user
     @user.update(user_params)
-    render json: @user, :include => [:schedules,:workouts]
+    render json: @user, :include => [:schedules]
   end
 
 private
@@ -27,6 +28,6 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:name,:username,:password)
+    params.require(:user).permit(:name,:username,:password,:schedules)
   end
 end

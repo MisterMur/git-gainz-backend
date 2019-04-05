@@ -6,11 +6,7 @@ class Api::V1::UserSchedulesController < ApplicationController
 
   def update
     @user_schedule.update(user_schedule_params)
-    if @user_schedule.save
-      render json: @user_schedule, status: :accepted
-    else
-      render json: { errors: @user_schedule.errors.full_messages }, status: :unprocessible_entity
-    end
+    render json: @user_schedule
   end
 
   def show
@@ -31,6 +27,4 @@ private
   def find_user_schedule
     @user_schedule = UserSchedule.find(params[:id])
   end
-end
-
 end

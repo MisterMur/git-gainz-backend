@@ -1,7 +1,7 @@
 class Api::V1::SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
-    render json: @schedules
+    render json: @schedules,:include => [:workouts]
   end
 
   def update
@@ -14,7 +14,8 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def show
-    @schedule = find_exercise
+    @schedule = find_schedule
+    render json: @schedule,:include => [:workouts]
   end
 
   def create
@@ -25,7 +26,7 @@ class Api::V1::SchedulesController < ApplicationController
 private
 
   def schedule_params
-    params.require(:schedules).permit(:name)
+    params.require(:schedule).permit(:name,:workouts)
   end
 
   def find_schedule
