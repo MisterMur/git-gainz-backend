@@ -1,6 +1,7 @@
 class Api::V1::ExercisesController < ApplicationController
   def index
     @exercises = Exercise.all
+    byebug
     render json: @exercises
   end
 
@@ -15,6 +16,7 @@ class Api::V1::ExercisesController < ApplicationController
 
   def show
     @exercise = find_exercise
+    render json:@exercise
   end
 
   def create
