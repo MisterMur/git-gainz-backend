@@ -1,7 +1,7 @@
 class Api::V1::SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
-    byebug
+
     render json: @schedules
   end
 
@@ -18,8 +18,8 @@ class Api::V1::SchedulesController < ApplicationController
     # workouts << @workout
     # byebug
     # @schedules.workouts << @workout
-    @schedule.workouts.build(workouts_params)
-    byebug
+    # @schedule.workouts.build(workouts_params)
+    # byebug
     @schedule.update(schedule_params)
     # byebug
     if @schedule.save
@@ -44,7 +44,7 @@ private
 
   def schedule_params
     # byebug
-    params.require(:schedule).permit(:id,:name,:workouts =>[:id,:name,:exercises],:exercises=>[:id,:name])
+    params.require(:schedule).permit(:id,:name,:workouts=>[:id,:name,:exercises=>[:id,:name]])
   end
 
   def find_schedule
@@ -52,11 +52,11 @@ private
   end
   def workout_params
 
-    params.permit(:id,:name,:exercises)
+    params.permit(:id,:name,:exercises=>[:id,:name])
   end
   def workouts_params
     params[:workouts].map do|workout|
-      workout.permit(:id, :name,:exercises)
+      workout.permit(:id, :name,:exercises=>[:id,:name])
     end
     byebug
   end
