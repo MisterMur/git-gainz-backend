@@ -28,7 +28,7 @@ class Api::V1::ExercisesController < ApplicationController
 private
 
   def exercise_params
-    params.require(:exercise).permit(:id,:name,:sets =>[:id,:weight,:reps,:rest,:exercise_id])
+    params.require(:exercise).permit(:id,:name,:circuits =>[:id,:weight,:reps,:rest,:exercise_id])
   end
 
   def find_exercise

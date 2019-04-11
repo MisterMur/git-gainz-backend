@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_200241) do
+ActiveRecord::Schema.define(version: 2019_04_11_171711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "circuits", force: :cascade do |t|
+    t.integer "weight"
+    t.integer "reps"
+    t.integer "rest"
+    t.integer "exercise_id"
+  end
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -21,13 +28,6 @@ ActiveRecord::Schema.define(version: 2019_04_03_200241) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "sets", force: :cascade do |t|
-    t.integer "weight"
-    t.integer "reps"
-    t.integer "rest"
-    t.integer "exercise_id"
   end
 
   create_table "user_schedules", force: :cascade do |t|
