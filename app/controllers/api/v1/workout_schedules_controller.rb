@@ -10,6 +10,7 @@ class Api::V1::WorkoutSchedulesController < ApplicationController
   end
 
   def create
+    # byebug
     @workout_schedule = WorkoutSchedule.create(workout_schedule_params)
     render json: @workout_schedule
   end

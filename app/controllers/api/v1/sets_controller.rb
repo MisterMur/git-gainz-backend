@@ -25,10 +25,10 @@ class Api::V1::SetsController < ApplicationController
   private
 
   def set_params
-    params.require(:sets).permit(:reps,:weight,:rest)
+    params.require(:set).permit(:id,:reps,:weight,:rest)
   end
 
   def find_set
-    @set = Exercise.find(params[:id])
+    @set = Set.find(params[:id])
   end
 end
