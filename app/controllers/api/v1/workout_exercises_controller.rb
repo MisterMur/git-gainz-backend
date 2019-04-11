@@ -11,7 +11,7 @@ class Api::V1::WorkoutExercisesController < ApplicationController
     end
 
     def create
-      byebug
+      # byebug
       @workout_exercise = WorkoutExercise.create(workout_exercise_params)
       render json: @workout_exercise
     end

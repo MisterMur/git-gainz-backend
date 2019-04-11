@@ -18,13 +18,13 @@ class Api::V1::CircuitsController < ApplicationController
   end
 
   def create
-    @circuit = Circuit.create(set_params)
+    @circuit = Circuit.create(circuit_params)
     render json: @circuit
   end
 
   private
 
-  def set_params
+  def circuit_params
     params.require(:circuit).permit(:id,:reps,:weight,:rest)
   end
 

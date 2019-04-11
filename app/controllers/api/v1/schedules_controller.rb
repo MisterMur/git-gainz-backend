@@ -30,6 +30,7 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def show
+    # byebug
     @schedule = find_schedule
     # byebug
     render json: @schedule,:include => [:workouts]
