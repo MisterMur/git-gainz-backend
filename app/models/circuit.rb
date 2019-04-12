@@ -1,3 +1,3 @@
 class Circuit < ApplicationRecord
-  belongs_to :Exercise
+  belongs_to :exercise
 end
