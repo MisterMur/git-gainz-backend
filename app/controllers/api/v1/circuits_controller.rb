@@ -19,7 +19,7 @@ class Api::V1::CircuitsController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     @circuit = Circuit.create(circuit_params)
     render json: @circuit
   end
