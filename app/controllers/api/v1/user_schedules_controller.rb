@@ -14,7 +14,7 @@ class Api::V1::UserSchedulesController < ApplicationController
   end
 
   def create
-    @user_schedule = Exercise.create(user_schedule_params)
+    @user_schedule = UserSchedule.create(user_schedule_params)
     render json: @user_schedule
   end
 
