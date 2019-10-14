@@ -83,6 +83,3 @@ production:
   database: git-gainz-backend_production
   username: git-gainz-backend
   password: <%= ENV['GIT-GAINZ-BACKEND_DATABASE_PASSWORD'] %>
-<<<<<<< HEAD
-=======
->>>>>>> parent of 4b18dbe... remove new table migrations
