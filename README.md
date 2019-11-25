@@ -1,4 +1,4 @@
-# RideShare-Backend
+# Git-Gainz-Backend
 API built in conjunction with [GITGAINZFRONT](https://github.com/mistermur.com/git-gainz-front) a react native mobile app for tracking workouts , reps, sets exercises.
 
 
