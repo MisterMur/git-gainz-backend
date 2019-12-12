@@ -14,14 +14,14 @@ WorkoutSchedule.destroy_all
 UserSchedule.destroy_all
 WorkoutExercise.destroy_all
 
-User.create(name:'Brad',username:'BradBro',password:'1234')
-User.create(name:'Chad',username:'ChadMan',password:'1234')
 
-Schedule.create(name:'Week 1 Strength')
-Schedule.create(name:'Week 1 Hypertrophy')
-Schedule.create(name:'Week 2 Crossfit')
-Schedule.create(name:'Week 2 Cardio')
+s1=Schedule.create(name:'Week 1 Strength')
+s2=Schedule.create(name:'Week 1 Hypertrophy')
+s3=Schedule.create(name:'Week 2 Crossfit')
+s4=Schedule.create(name:'Week 2 Cardio')
 
+User.create(name:'brad',username:'bradBro',password:'1234',schedules:[s1,s2,s3,s4])
+User.create(name:'chad',username:'chadMan',password:'1234',schedules:[s1,s2,s3,s4])
 
 Workout.create(name:'Pull')
 Workout.create(name:'Push')
@@ -34,9 +34,9 @@ Exercise.create(name:'Pullups')
 Exercise.create(name:'Pushups')
 Exercise.create(name:'Skull-Crushers')
 
-UserSchedule.create(user_id: User.find_by(name:'Brad').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
-UserSchedule.create(user_id: User.find_by(name:'Chad').id,schedule_id: Schedule.find_by(name:'Week 1 Hypertrophy').id)
-UserSchedule.create(user_id: User.find_by(name:'Chad').id,schedule_id: Schedule.find_by(name:'Week 2 Crossfit').id)
+# UserSchedule.create(user_id: User.find_by(username:'BradBro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
+# UserSchedule.create(user_id: User.find_by(username:'Chad').id,schedule_id: Schedule.find_by(name:'Week 1 Hypertrophy').id)
+# UserSchedule.create(user_id: User.find_by(username:'Chad').id,schedule_id: Schedule.find_by(name:'Week 2 Crossfit').id)
 
 WorkoutSchedule.create(workout_id: Workout.find_by(name:'Pull').id, schedule_id: Schedule.find_by(name:'Week 1 Strength').id )
 WorkoutSchedule.create(workout_id: Workout.find_by(name:'Push').id, schedule_id: Schedule.find_by(name:'Week 1 Hypertrophy').id)
