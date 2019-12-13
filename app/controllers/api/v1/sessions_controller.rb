@@ -3,7 +3,7 @@ class Api::V1::SessionsController < ApplicationController
 
   # POST /v1/login
   def create
-    byebug
+    # byebug
     @user = User.find_for_database_authentication(username: params[:user])
     return invalid_login_attempt unless @user
 

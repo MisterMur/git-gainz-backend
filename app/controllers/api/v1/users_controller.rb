@@ -29,6 +29,6 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:name,:username,:password,:schedules)
+    params.require(:user).permit(:username,:password)
   end
 end
