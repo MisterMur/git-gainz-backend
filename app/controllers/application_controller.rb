@@ -9,6 +9,7 @@ class ApplicationController < ActionController::API
   # User Authentication
   # Authenticates the user with OAuth2 Resource Owner Password Credentials Grant
   def authenticate_user_from_token!
+    # byebug
     auth_token = request.headers['Authorization']
 
     if auth_token
