@@ -11,6 +11,7 @@ class ApplicationController < ActionController::API
   def authenticate_user_from_token!
     # byebug
     auth_token = request.headers['Authorization']
+    print auth_token
 
     if auth_token
       authenticate_with_auth_token auth_token
@@ -22,10 +23,12 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_with_auth_token auth_token
+    byebug
     unless auth_token.include?(':')
       authentication_error
       return
     end
+    print user_id
 
     user_id = auth_token.split(':').first
     user = User.where(id: user_id).first
