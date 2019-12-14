@@ -4,10 +4,11 @@ class Api::V1::SessionsController < ApplicationController
   # POST /v1/login
   def create
     # byebug
-    @user = User.find_for_database_authentication(username: params[:user])
+    @user = User.find_for_database_authentication( email: params[:user][:email])
+    # byebug
     return invalid_login_attempt unless @user
 
-    if @user.valid_password?(params[:password])
+    if @user.valid_password?(params[:user][:password])
       sign_in :user, @user
       render json: @user, serializer: SessionSerializer, root: nil
     else

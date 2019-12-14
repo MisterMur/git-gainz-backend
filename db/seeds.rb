@@ -20,8 +20,8 @@ s2=Schedule.create(name:'Week 1 Hypertrophy')
 s3=Schedule.create(name:'Week 2 Crossfit')
 s4=Schedule.create(name:'Week 2 Cardio')
 
-User.create(name:'brad',username:'bradBro',password:'1234',schedules:[s1,s2,s3,s4])
-User.create(name:'chad',username:'chadMan',password:'1234',schedules:[s1,s2,s3,s4])
+User.create(name:'brad',username:'bradbro',email:'brad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
+User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
 
 Workout.create(name:'Pull')
 Workout.create(name:'Push')
