@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
 
   def index
+    # byebug
     @users=User.all
     # byebug
     render json: @users,:include => [:schedules]

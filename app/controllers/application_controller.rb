@@ -23,12 +23,12 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_with_auth_token auth_token
-    byebug
+    # byebug
     unless auth_token.include?(':')
       authentication_error
       return
     end
-    print user_id
+    # print user_id
 
     user_id = auth_token.split(':').first
     user = User.where(id: user_id).first
