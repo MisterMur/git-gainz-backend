@@ -4,12 +4,12 @@ class Api::V1::UsersController < ApplicationController
     # byebug
     @users=User.all
     # byebug
-    render json: @users,:include => [:schedules]
+    render json: @users#,:include => [:schedules]
   end
 
   def show
     @user = get_user
-    render json: @user, :include => [:schedules]
+    render json: @user#, :include => [:schedules]
   end
 
   def create

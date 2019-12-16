@@ -20,9 +20,6 @@ s2=Schedule.create(name:'Week 1 Hypertrophy')
 s3=Schedule.create(name:'Week 2 Crossfit')
 s4=Schedule.create(name:'Week 2 Cardio')
 
-User.create(name:'brad',username:'bradbro',email:'brad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
-User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
-
 Workout.create(name:'Pull')
 Workout.create(name:'Push')
 Workout.create(name:'Legs')
@@ -34,7 +31,6 @@ Exercise.create(name:'Pullups')
 Exercise.create(name:'Pushups')
 Exercise.create(name:'Skull-Crushers')
 
-# UserSchedule.create(user_id: User.find_by(username:'BradBro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
 # UserSchedule.create(user_id: User.find_by(username:'Chad').id,schedule_id: Schedule.find_by(name:'Week 1 Hypertrophy').id)
 # UserSchedule.create(user_id: User.find_by(username:'Chad').id,schedule_id: Schedule.find_by(name:'Week 2 Crossfit').id)
 
@@ -49,3 +45,8 @@ WorkoutExercise.create(workout_id: Workout.find_by(name:'Push').id, exercise_id:
 WorkoutExercise.create(workout_id: Workout.find_by(name:'Legs').id, exercise_id: Exercise.find_by(name:'Squats').id)
 WorkoutExercise.create(workout_id: Workout.find_by(name:'Legs').id, exercise_id: Exercise.find_by(name:'Leg-Press').id)
 WorkoutExercise.create(workout_id: Workout.find_by(name:'Push').id, exercise_id: Exercise.find_by(name:'Skull-Crushers').id)
+
+User.create(name:'brad',username:'bradbro',email:'brad@gmail.com',password:'123456')
+User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
+
+UserSchedule.create(user_id: User.find_by(username:'bradbro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
