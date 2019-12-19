@@ -14,6 +14,7 @@ class Api::V1::UserSchedulesController < ApplicationController
   end
 
   def create
+    # byebug
     @user_schedule = UserSchedule.create(user_schedule_params)
     render json: @user_schedule
   end

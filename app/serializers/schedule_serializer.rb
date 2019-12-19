@@ -11,7 +11,7 @@ class ScheduleSerializer < ActiveModel::Serializer
 
       # ===========================================================
       customized_workouts.push(custom_workout)
-      byebug
+      # byebug
     end
     return customized_workouts
   end

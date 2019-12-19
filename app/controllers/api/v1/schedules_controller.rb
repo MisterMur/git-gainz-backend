@@ -38,6 +38,7 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def create
+    # byebug
     @schedule = Schedule.create(schedule_params)
     render json: @schedule
   end
