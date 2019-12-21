@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, :only => [ :create]
 
   def index
     # byebug
@@ -13,7 +14,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     @user = User.create(user_params)
     render json: @user
   end
@@ -30,6 +31,6 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:username,:password)
+    params.require(:user).permit(:username,:password,:name,:email,:phone)
   end
 end
