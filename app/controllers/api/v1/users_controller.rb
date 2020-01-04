@@ -14,8 +14,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    # byebug
     @user = User.create(user_params)
+    # byebug
     render json: @user
   end
 
