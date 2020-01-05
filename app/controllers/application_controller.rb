@@ -9,7 +9,14 @@ class ApplicationController < ActionController::API
   # User Authentication
   # Authenticates the user with OAuth2 Resource Owner Password Credentials Grant
   def authenticate_user_from_token!
+    
     auth_token = request.headers['Authorization']
+
+    #if using postman for development
+    if(auth_token.include?("Bearer"))
+      auth_token= auth_token.split(' ')[1]
+    end
+
     print auth_token
 
     if auth_token
@@ -33,7 +40,7 @@ class ApplicationController < ActionController::API
     user = User.where(id: user_id).first
 
     if user && Devise.secure_compare(user.access_token, auth_token)
-    
+
       sign_in user, store: false
     else
       authentication_error
