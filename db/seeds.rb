@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+UserWorkout.destroy_all
 User.destroy_all
 Schedule.destroy_all
 Workout.destroy_all
@@ -50,3 +51,5 @@ User.create(name:'brad',username:'bradbro',email:'brad@gmail.com',password:'1234
 User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
 
 UserSchedule.create(user_id: User.find_by(username:'bradbro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
+
+uw = UserWorkout.create(user_id:User.all.first.id,workout_id:Workout.all.first.id)

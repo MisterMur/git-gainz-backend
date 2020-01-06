@@ -25,6 +25,10 @@ private
     params.require(:user_workout).permit(:id,:user_id,:workout_id)
   end
 
+  def get_workout
+    Workout.find(params[:workout_id])
+  end
+
   def find_user_workout
     @user_workout = UserWorkout.find(params[:id])
   end

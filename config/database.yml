@@ -20,7 +20,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+test:
+  database: git-gainz-backend_test
+  username: <%= ENV['USERNAME_DB'] %>
+  password:  <%= ENV['PASSWORD_DB'] %>
 development:
   <<: *default
   database: git-gainz-backend_development
@@ -82,5 +85,5 @@ development:
 production:
   <<: *default
   database: git-gainz-backend_production
-  username: git-gainz-backend
-  password: <%= ENV['GIT-GAINZ-BACKEND_DATABASE_PASSWORD'] %>
+  username: <%= ENV['USERNAME_DB'] %>
+  password:  <%= ENV['PASSWORD_DB'] %>
