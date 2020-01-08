@@ -52,4 +52,4 @@ User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'1234
 
 UserSchedule.create(user_id: User.find_by(username:'bradbro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
 
-uw = UserWorkout.create(user_id:User.all.first.id,workout_id:Workout.all.first.id)
+# uw = UserWorkout.create(user_id:User.all.first.id,workout_id:Workout.all.first.id)
