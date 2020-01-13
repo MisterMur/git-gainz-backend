@@ -32,7 +32,8 @@ gem "rack-cors", ">= 1.0.4"
 
 gem "rspec-rails"
 
-
+gem 'deep_cloneable', '~> 3.0.0'
+gem 'amoeba'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

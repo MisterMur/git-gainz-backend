@@ -6,5 +6,12 @@ class Workout < ApplicationRecord
   has_many :user_workouts
   has_many :users, through: :user_workouts
 
+  amoeba do
+    enable
+    clone [:exercises]
+    # include_association :exercises
+
+  end
+
   # accepts_nested_attributes_for :exercises
 end

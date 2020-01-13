@@ -2,6 +2,7 @@ class UserWorkout < ApplicationRecord
   belongs_to :user
   belongs_to :workout
 
+
   # belongs_to :completed_workout, :class_name => 'Workout', :foreign_key => :workout_id
   # has_many :workout_exercises
   # has_many :exercises,through: :workout_exercises
@@ -11,7 +12,17 @@ class UserWorkout < ApplicationRecord
   # has_many :users, through: :user_workouts
 
   def workout_snapshot
-    # byebug
+
+    # dupworkout = workout.dup #shallow copy
+    # Marshal.load(Marshal.dump(workout)) #deep copy
+
+    # deep_cloneable
+    # w = workout.deep_clone include:[{exercises:[:circuits]}], use_dictionary:true
+
+    workout.amoeba_dup
+
+
+    byebug
     # test = Hash.new {|h,k| h[k] = k*k }
     # h.default_proc = proc do |hash, key|
     #   hash[key] = key + key
