@@ -10,6 +10,17 @@ class Workout < ApplicationRecord
     enable
     clone [:exercises]
     # include_association :exercises
+   #  customize([
+   #   lambda do |orig_obj,copy_of_obj|
+   #     # good stuff goes here
+   #     byebug
+   #   end,
+   #
+   #   # lambda do |orig_obj,copy_of_obj|
+   #   #   # more good stuff goes here
+   #   # end
+   # ])
+
 
   end
 

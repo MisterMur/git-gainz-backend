@@ -16,14 +16,42 @@ class UserSerializer < ActiveModel::Serializer
   #   return customized_schedules
   #
   # end
+  def exercises
+    customized_exercises = []
+    workout.exercises.each do |exercise|
+      # ===========================================================
+      custom_exercise = exercise.attributes
+      custom_exercise[:circuits] = exercise.circuits.collect{|circuits| circuits.slice(:id, :reps,:weight,:rest)}
+
+      # ===========================================================
+      customized_exercises.push(custom_exercise)
+    end
+    # byebug
+    return customized_exercises
+  end
   def user_workouts
     custom_userworkouts = []
     object.user_workouts.each do |uw|
       custom_uw = uw.attributes
-      custom_uw[:workout_snapshot]=uw.exercises.collect{|exercise|exercise.slice(:id,:name)}
+      custom_uw[:exercises]=uw.workout_snapshot.exercises.collect do |exercise|
+        custom_exercise = exercise.attributes
+        customized_exercises=[]
+        custom_exercise[:circuits] = exercise.circuits.collect{|circuits| circuits.slice(:id, :reps,:weight,:rest)}
+
+        # ===========================================================
+        customized_exercises.push(custom_exercise)
+
+      end
+
+      # custom_uw[:completed_workout][:ex=uw.workout_snapshot.exercises.collect{|exercise|exercise.slice(:id,:name)}
+
+
       custom_userworkouts.push(custom_uw)
+      # byebug
     end
+    return custom_userworkouts
   end
+
   def schedules
     customized_schedules= []
 
