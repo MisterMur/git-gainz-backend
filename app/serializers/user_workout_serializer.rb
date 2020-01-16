@@ -1,5 +1,5 @@
 class UserWorkoutSerializer < ActiveModel::Serializer
-  attributes :id,:user,:workout,:workout_snapshot
+  attributes :id,:workout,:workout_snapshot
   def workout
     # byebug
     @object.workout

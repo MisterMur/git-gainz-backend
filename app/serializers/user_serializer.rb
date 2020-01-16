@@ -32,9 +32,9 @@ class UserSerializer < ActiveModel::Serializer
   def user_workouts
     custom_userworkouts = []
     object.user_workouts.each do |uw|
-      # byebug
 
       custom_uw = uw.attributes
+      custom_uw[:name] = uw.workout_snapshot.name
       custom_uw[:exercises]=uw.workout_snapshot.exercises.collect do |exercise|
         custom_exercise = exercise.attributes
         customized_exercises=[]
