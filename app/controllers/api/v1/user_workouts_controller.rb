@@ -11,11 +11,12 @@ class Api::V1::UserWorkoutsController < ApplicationController
 
   def show
     @user_workout = find_user_workout
+    render json: @user_workout
   end
 
   def create
     # byebug
-    @user_workout = UserWorkout.create(user_workouts_params)
+    @user_workout = UserWorkout.create(user_workouts_params,name: get_workout.name)
     render json: @user_workout,serializer: nil
   end
 
