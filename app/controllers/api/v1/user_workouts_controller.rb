@@ -15,19 +15,19 @@ class Api::V1::UserWorkoutsController < ApplicationController
   end
 
   def create
-    # byebug
-    @user_workout = UserWorkout.create(user_workouts_params,name: get_workout.name)
+    @user_workout = UserWorkout.create(user_id: user_params.id, name: get_workout.name,workout_id: get_workout.id )
     render json: @user_workout,serializer: nil
   end
 
 private
 
-  def user_workouts_params
-    params.require(:user_workout).permit(:id,:user_id,:workout_id)
+  def user_params
+    User.find(params[:user_id])
+    # params.require(:user_workout).permit(:id,:user_id,:workout_id)
   end
 
   def get_workout
-    Workout.find(params[:workout_id])
+    Workout.find(params[:completedWorkout][:id])
   end
 
   def find_user_workout
