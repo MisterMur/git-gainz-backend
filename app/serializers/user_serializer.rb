@@ -8,15 +8,16 @@ class UserSerializer < ActiveModel::Serializer
       custom_uw = uw.attributes
       custom_uw[:name] = uw.workout_snapshot.name
       # uw.workout_snapshot.exercises.collect
-      custom_uw[:exercises]=uw.workout.exercises.collect do |exercise|
+      custom_uw[:exercises]=uw.workout.exercises.map do |exercise|
 
         custom_exercise = exercise.attributes
         customized_exercises=[]
         custom_exercise[:circuits] = exercise.circuits.collect{|circuits| circuits.slice(:id, :reps,:weight,:rest)}
 
         # ===========================================================
-        customized_exercises.push(custom_exercise)
+        customized_exercises.push(custom_exercise)[0]
       end
+			
       custom_userworkouts.push(custom_uw)
     end
     return custom_userworkouts
