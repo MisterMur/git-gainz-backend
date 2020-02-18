@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 	namespace :api do
 		namespace :v1 do
-			resources :exercises_muscles
+			resources :exercise_muscles
 		end
 	end
   namespace :api do

@@ -68,7 +68,7 @@ ExerciseMuscle.create(exercise_id: Exercise.find_by(name:'Bench-Press').id, musc
 
 ExerciseMuscle.create(exercise_id: Exercise.find_by(name:'Skull-Crushers').id, muscle_id: Muscle.find_by(name:'Triceps').id)
 
-
+# b=ExerciseMuscle.create(exercises: Exercise.find_by(name:'Skull-Crushers'), muscles: Muscle.find_by(name:'Triceps'))
 
 
 

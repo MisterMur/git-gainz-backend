@@ -1,15 +1,14 @@
-class Api::V1::ExercisesMusclesController < ApplicationController
+class Api::V1::ExerciseMusclesController < ApplicationController
 
 
   def index
-		byebug
     @exercise_muscles=ExerciseMuscle.all
-    render json: @exercises_muscles
+		# byebug
+    render json: @exercise_muscles
   end
 
   def show
-    @exercise_muscle = get_exercise_muscle
-    render json: @exercises_muscle
+    render json: get_exercise_muscle
   end
 
   def create
