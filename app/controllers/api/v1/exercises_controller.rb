@@ -2,7 +2,7 @@ class Api::V1::ExercisesController < ApplicationController
   def index
     @exercises = Exercise.all
     # byebug
-    render json: @exercises,:include=>[:circuits]
+    render json: @exercises,:include=>[:muscles,:circuits]
   end
 
   def update
@@ -16,7 +16,8 @@ class Api::V1::ExercisesController < ApplicationController
 
   def show
     @exercise = find_exercise
-    render json:@exercise,:include=>[:circuits]
+		# byebug
+    render json:@exercise,:include=>[:muscles,:circuits]
   end
 
   def create

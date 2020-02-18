@@ -1,5 +1,5 @@
 class ExerciseSerializer < ActiveModel::Serializer
-  attributes :id,:name,:circuits
+  attributes :id,:name,:circuits,:muscles
   def circuits
     customized_circuits = []
 
