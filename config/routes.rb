@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+	namespace :api do
+		namespace :v1 do
+			resources :exercises_muscles
+		end
+	end
+  namespace :api do
+    namespace :v1 do
+      resources :muscles
+    end
+  end
   devise_for :users
   namespace :api do
     namespace :v1 do

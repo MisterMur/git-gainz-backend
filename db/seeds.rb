@@ -10,7 +10,10 @@ User.destroy_all
 Schedule.destroy_all
 Workout.destroy_all
 Exercise.destroy_all
+Muscle.destroy_all
+
 # Set.destroy_all
+ExerciseMuscle.destroy_all
 WorkoutSchedule.destroy_all
 UserSchedule.destroy_all
 WorkoutExercise.destroy_all
@@ -51,5 +54,22 @@ User.create(name:'brad',username:'bradbro',email:'brad@gmail.com',password:'1234
 User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'123456',schedules:[s1,s2,s3,s4])
 
 UserSchedule.create(user_id: User.find_by(username:'bradbro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
+
+
+Muscle.create(name:'Biceps')
+Muscle.create(name:'Triceps')
+Muscle.create(name:'Chest')
+Muscle.create(name:'Back')
+Muscle.create(name:'Hamstrings')
+Muscle.create(name:'Calves')
+Muscle.create(name:'Quads')
+
+ExerciseMuscle.create(exercise_id: Exercise.find_by(name:'Bench-Press').id, muscle_id: Muscle.find_by(name:'Chest').id)
+
+ExerciseMuscle.create(exercise_id: Exercise.find_by(name:'Skull-Crushers').id, muscle_id: Muscle.find_by(name:'Triceps').id)
+
+
+
+
 
 # uw = UserWorkout.create(user_id:User.all.first.id,workout_id:Workout.all.first.id)
