@@ -1,9 +1,12 @@
 class UserWorkoutSerializer < ActiveModel::Serializer
-  attributes :id,:workout_snapshot#,:workout
+  attributes :id,:name,:workout_snapshot#,:workout
 
   # def workout
   #   @object.workout
   # end
+	def name
+		@object.workout.name
+	end
 
 	def workout_snapshot
 		custom_workoutsnapshot = []
