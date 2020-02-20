@@ -20,10 +20,11 @@ class UserWorkout < ApplicationRecord
 			end
 		end
 
-		count_muscle_sets.map do |k,v|
-			data.push({k=>v})
-		end
-		data
+		count_muscle_sets
+		# .map do |k,v|
+		# 	data.push({k=>v})
+		# end
+		# data
 
 	end
 
@@ -37,10 +38,11 @@ class UserWorkout < ApplicationRecord
 				end
 			end
 		end
-		count_muscle_reps.map do |k,v|
-			data.push({k=>v})
-		end
-		data
+		count_muscle_reps
+		# .map do |k,v|
+		# 	data.push({k=>v})
+		# end
+		# data
 	end
 
   def get_workout
