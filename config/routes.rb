@@ -10,9 +10,16 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users
-  namespace :api do
+
+	namespace :api do
     namespace :v1 do
-      resources :user_workouts
+      resources :user_workouts do
+				member do
+					get :muscle_sets_data
+					get :muscle_reps_data
+				end
+			end
+
     end
   end
   namespace :api do

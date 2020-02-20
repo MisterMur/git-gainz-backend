@@ -19,6 +19,16 @@ class Api::V1::UserWorkoutsController < ApplicationController
     render json: @user_workout,serializer: nil
   end
 
+	def muscle_sets_data
+		sets_data = find_user_workout.muscle_sets_data
+		render json: sets_data, serializer: nil
+	end
+
+	def muscle_reps_data
+		reps_data = find_user_workout.muscle_reps_data
+		render json: reps_data, serializer: nil
+	end
+
 private
 
   def user_params

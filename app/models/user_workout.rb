@@ -5,37 +5,33 @@ class UserWorkout < ApplicationRecord
   attr_accessor :workout_snapshot
 
 
-  # belongs_to :completed_workout, :class_name => 'Workout', :foreign_key => :workout_id
-  # has_many :workout_exercises
-  # has_many :exercises,through: :workout_exercises
-  # has_many :workout_schedules
-  # has_many :schedules,through: :workout_schedules
-  # has_many :user_workouts
-  # has_many :users, through: :user_workouts
-
   def workout_snapshot
-
-    # dupworkout = workout.dup #shallow copy
-    # Marshal.load(Marshal.dump(workout)) #deep copy
-
-    # deep_cloneable
-    # w = workout.deep_clone include:[{exercises:[:circuits]}], use_dictionary:true
-
     workout_clone = workout.amoeba_dup
-    # custom_uw[:completed_workout]=uw.workout_snapshot.exercises.collect{|exercise|exercise.slice(:id,:name)}
-    # byebug
-
-
-    # byebug
-    # test = Hash.new {|h,k| h[k] = k*k }
-    # h.default_proc = proc do |hash, key|
-    #   hash[key] = key + key
-    #   byebug
-    # end
-    # byebug
-
-    # self.exercises = workout.exercises
   end
+
+	def muscle_sets_data
+		count_muscle_sets = Hash.new(0)
+		workout_snapshot.exercises.map do |exercise|
+			exercise.circuits.map do |circuit|
+				exercise.muscles.each do |muscle|
+					count_muscle_sets[muscle.name]+=1
+				end
+			end
+		end
+		count_muscle_sets
+	end
+
+	def muscle_reps_data
+		count_muscle_reps = Hash.new(0)
+		workout_snapshot.exercises.map do |exercise|
+			exercise.circuits.map do |circuit|
+				exercise.muscles.each do |muscle|
+					count_muscle_reps[muscle.name]+=circuit.reps
+				end
+			end
+		end
+		count_muscle_reps
+	end
 
   def get_workout
     Workout.new()

@@ -9,6 +9,7 @@ class Workout < ApplicationRecord
   amoeba do
     enable
     clone [:exercises]
+		# byebug
     # include_association :exercises
    #  customize([
    #   lambda do |orig_obj,copy_of_obj|

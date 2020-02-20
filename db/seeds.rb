@@ -56,13 +56,16 @@ User.create(name:'chad',username:'chadman',email:'chad@gmail.com',password:'1234
 UserSchedule.create(user_id: User.find_by(username:'bradbro').id,schedule_id: Schedule.find_by(name:'Week 1 Strength').id)
 
 
+Muscle.create(name:'Shoulders')
 Muscle.create(name:'Biceps')
 Muscle.create(name:'Triceps')
+Muscle.create(name:'Forearms')
 Muscle.create(name:'Chest')
 Muscle.create(name:'Back')
+Muscle.create(name:'Abs')
+Muscle.create(name:'Quads')
 Muscle.create(name:'Hamstrings')
 Muscle.create(name:'Calves')
-Muscle.create(name:'Quads')
 
 ExerciseMuscle.create(exercise_id: Exercise.find_by(name:'Bench-Press').id, muscle_id: Muscle.find_by(name:'Chest').id)
 
