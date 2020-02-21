@@ -17,6 +17,7 @@ class Api::V1::WorkoutsController < ApplicationController
 
   def update
     @workout = get_workout
+		# byebug
     @workout.update(workout_params)
     render json: @workout, :include => [:exercises]
   end

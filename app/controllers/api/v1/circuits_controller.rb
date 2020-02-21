@@ -23,6 +23,11 @@ class Api::V1::CircuitsController < ApplicationController
     @circuit = Circuit.create(circuit_params)
     render json: @circuit
   end
+	def destroy
+	    @circuit = find_circuit
+	    @circuit.destroy
+			# byebug
+	end
 
   private
 

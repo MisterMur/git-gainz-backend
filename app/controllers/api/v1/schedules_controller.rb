@@ -61,6 +61,6 @@ private
     params[:workouts].map do|workout|
       workout.permit(:id, :name,:exercises=>[:id,:name])
     end
-    byebug
+    # byebug
   end
 end
