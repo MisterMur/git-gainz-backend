@@ -19,7 +19,6 @@ class UserWorkoutSerializer < ActiveModel::Serializer
 			customized_exercises=[]
 			custom_exercise[:circuits] = exercise.circuits.collect{|circuits| circuits.slice( :reps,:weight,:rest)}
 			custom_exercise[:muscles]= exercise.muscles.collect{|muscles|muscles.slice(:name)}
-			# byebug
 
 			custom_workoutsnapshot.push(custom_exercise)
 		end
