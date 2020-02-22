@@ -17,22 +17,22 @@ class Api::V1::UserWorkoutsController < ApplicationController
   def create
     @user_workout = UserWorkout.create(user_id: user_params.id, name: get_workout.name,workout_id: get_workout.id )
 		# byebug
-		if(@user_workout.save!)
+		if(@user_workout.workout_snapshot.save!)
 			get_workout.exercises.each_with_index do |exercise,idx|
 				circuits_dup = []
 				exercise.circuits.each do |circuit|
-					copy_circuit = circuit.amoeba_dup
-					circuits_dup.push(copy_circuit)
+					# copy_circuit = circuit.amoeba_dup
+					# circuits_dup.push(copy_circuit)
 					circuit.destroy
 					# byebug
 				end
-				circuits_dup.map do |c|
-
-					@user_workout.workout_snapshot.exercises[idx].circuits.push(c)
-				end
-				byebug
+				# circuits_dup.map do |c|
+				#
+				# 	@user_workout.workout_snapshot.exercises[idx].circuits.push(c)
+				# end
+				# byebug
 			end
-			# byebug
+			byebug
 		end
 		# byebu  g
 

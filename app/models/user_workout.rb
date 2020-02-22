@@ -7,6 +7,9 @@ class UserWorkout < ApplicationRecord
 
   def workout_snapshot
     workout_clone = workout.amoeba_dup
+		# workout_clone.save
+		# workout_clone
+		# byebug
   end
 
 	def muscle_sets_data

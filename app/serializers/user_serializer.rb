@@ -6,6 +6,7 @@ class UserSerializer < ActiveModel::Serializer
     object.user_workouts.each do |uw|
 
       custom_uw = uw.attributes
+			# byebug
       custom_uw[:name] = uw.workout_snapshot.name
       # uw.workout_snapshot.exercises.collect
       custom_uw[:exercises]=uw.workout_snapshot.exercises.map do |exercise|
