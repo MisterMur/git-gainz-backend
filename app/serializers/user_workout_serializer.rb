@@ -1,11 +1,14 @@
 class UserWorkoutSerializer < ActiveModel::Serializer
-  attributes :id,:name,:workout_snapshot#,:workout
+  attributes :id,:name,:exercises#,:workout,
 
   # def workout
-  #   @object.workout
+  #   @object.workout.exercises
   # end
 	def name
 		@object.workout.name
+	end
+	def exercises
+		workout_snapshot
 	end
 
 	def workout_snapshot
