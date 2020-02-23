@@ -1,6 +1,10 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id,:name,:username,:email,:schedules,:user_workouts
+  attributes :id,:name,:username,:email,:schedules,:completed_workouts,:user_workouts
+	# :user_workouts
 
+	# def user_workouts
+	# 	object.completed_workouts
+	# end
   def user_workouts
     custom_userworkouts = []
     object.user_workouts.each do |uw|
@@ -14,14 +18,13 @@ class UserSerializer < ActiveModel::Serializer
         custom_exercise = exercise.attributes
         customized_exercises=[]
         custom_exercise[:circuits] = exercise.circuits.collect{|circuits| circuits.slice(:id, :reps,:weight,:rest)}
-
-        # ===========================================================
 				# byebug
         customized_exercises.push(custom_exercise)[0]
       end
 
       custom_userworkouts.push(custom_uw)
     end
+		# byebug
     return custom_userworkouts
   end
 

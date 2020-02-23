@@ -6,7 +6,7 @@ class Api::V1::UserWorkoutsController < ApplicationController
 
   def update
     @user_workout.update(user_workouts_params)
-    render json: @user_workout
+    render json: @user_workout,serializer: nil
   end
 
   def show
@@ -16,18 +16,22 @@ class Api::V1::UserWorkoutsController < ApplicationController
 
   def create
     @user_workout = UserWorkout.create(user_id: user_params.id, name: get_workout.name,workout_id: get_workout.id )
-		if(@user_workout.workout_snapshot.save!)
+		cc = @user_workout.workout_snapshot.exercises.first.circuits.first
+		if(@user_workout.workout_snapshot)
 			get_workout.exercises.each_with_index do |exercise,idx|
 				circuits_dup = []
 				exercise.circuits.each do |circuit|
-					# copy_circuit = circuit.amoeba_dup
+					copy_circuit = circuit.amoeba_dup
+					copy_circuit.save
+					@user_workout.workout_snapshot.exercises[idx].circuits.push(copy_circuit)
 					# circuits_dup.push(copy_circuit)
+					# circuit.destroy
 					circuit.destroy
 					# byebug
 				end
 				# circuits_dup.map do |c|
 				#
-				# 	@user_workout.workout_snapshot.exercises[idx].circuits.push(c)
+					# @user_workout.workout_snapshot.exercises[idx].circuits
 				# end
 				# byebug
 			end
