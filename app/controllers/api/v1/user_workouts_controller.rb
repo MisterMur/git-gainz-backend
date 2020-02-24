@@ -21,12 +21,16 @@ class Api::V1::UserWorkoutsController < ApplicationController
 			get_workout.exercises.each_with_index do |exercise,idx|
 				circuits_dup = []
 				exercise.circuits.each do |circuit|
-					copy_circuit = circuit.amoeba_dup
-					copy_circuit.save
-					@user_workout.workout_snapshot.exercises[idx].circuits.push(copy_circuit)
+					copy_circuit = circuit.dup
+
+					# @user_workout.workout_snapshot.exercises[idx].save
+					# copy_circuit[:exercise_id]=@user_workout.workout_snapshot.exercises[idx].id
+					# copy_circuit.save
+					# byebug
+					# circuits.push(copy_circuit)
 					# circuits_dup.push(copy_circuit)
 					# circuit.destroy
-					circuit.destroy
+					# circuit.destroy
 					# byebug
 				end
 				# circuits_dup.map do |c|
@@ -54,11 +58,13 @@ class Api::V1::UserWorkoutsController < ApplicationController
 private
 
   def user_params
+		# byebug
     User.find(params[:user_id])
     # params.require(:user_workout).permit(:id,:user_id,:workout_id)
   end
 
   def get_workout
+		# byebug
     Workout.find(params[:completedWorkout][:id])
   end
 
