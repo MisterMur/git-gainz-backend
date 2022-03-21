@@ -15,10 +15,7 @@ Rails v5.2.3
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
-1) bundle install
-2) rails db:migrate
-3) rails db:seed 
+1) ruby bin/setup
 4) rails s
  
 
