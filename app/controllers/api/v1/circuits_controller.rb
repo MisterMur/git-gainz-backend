@@ -6,7 +6,7 @@ class Api::V1::CircuitsController < ApplicationController
 
   def update
     @circuit=find_circuit
-    @circuit.update(set_params)
+    @circuit.update(circuit_params)
     if @circuit.save
       render json: @circuit, status: :accepted
     else
@@ -19,20 +19,19 @@ class Api::V1::CircuitsController < ApplicationController
   end
 
   def create
-    # byebug
     @circuit = Circuit.create(circuit_params)
     render json: @circuit
   end
-	def destroy
-	    @circuit = find_circuit
-	    @circuit.destroy
-			# byebug
-	end
+
+  def destroy
+    @circuit = find_circuit
+    @circuit.destroy
+  end
 
   private
 
   def circuit_params
-    params.require(:circuit).permit(:id,:reps,:weight,:rest,:exercise_id)
+    params.require(:circuit).permit(:id, :reps, :weight, :rest, :exercise_id)
   end
 
   def find_circuit

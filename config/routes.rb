@@ -1,74 +1,33 @@
 Rails.application.routes.draw do
-	namespace :api do
-		namespace :v1 do
-			resources :exercise_muscles
-		end
-	end
   namespace :api do
     namespace :v1 do
       resources :muscles
-    end
-  end
-  devise_for :users
-
-	namespace :api do
-    namespace :v1 do
+      resources :exercises do
+        resources :exercise_muscles
+      end
+      resources :workouts do
+        resources :workout_schedules
+        resources :workout_exercises
+      end
       resources :user_workouts do
-				member do
-					get :muscle_sets_data
-					get :muscle_reps_data
-				end
-			end
-
-    end
-  end
-  namespace :api do
-    namespace :v1 do
+        member do
+          get :muscle_sets_data
+          get :muscle_reps_data
+        end
+      end
+      resources :completed_workouts
+      resources :circuits do
+        resources :completed_circuits
+      end
+      resources :schedules
       resources :user_schedules
-    end
-  end
-  namespace :api do
-    namespace :v1 do
       resources :users
     end
-  end
-  namespace :api do
-    namespace :v1 do
-      resources :workout_schedules
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      resources :schedules
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      resources :workout_exercises
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      resources :workouts
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      resources :exercises
-    end
-  end
-  namespace :api do
-    namespace :v1 do
-      resources :circuits
-    end
-  end
 
-  namespace :api do
     namespace :v1, defaults: { format: :json } do
       resource :login, controller: :sessions
-      # resource :login, only: [:create], controller: :sessions
-
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
 end
